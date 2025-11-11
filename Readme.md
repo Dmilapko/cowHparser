@@ -1,3 +1,7 @@
+# Crates.io
+
+<https://crates.io/crates/cow-parser >
+
 # Cow Parser
 
 A parser for the esoteric Cow programming language, built in Rust using the `pest` library.
