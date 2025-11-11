@@ -29,4 +29,3 @@ OOM = { "OOM" }
 oom = { "oom" }
 
 program = _{ SOI ~ (command | ANY)* ~ EOI }
-```rust
