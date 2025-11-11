@@ -1,0 +1,18 @@
+command = {
+    moo | mOo | moO | mOO | Moo | MOo | MoO | MOO | OOO | MMM | OOM | oom
+}
+
+moo = { "moo" }
+mOo = { "mOo" }
+moO = { "moO" }
+mOO = { "mOO" }
+Moo = { "Moo" }
+MOo = { "MOo" }
+MoO = { "MoO" }
+MOO = { "MOO" }
+OOO = { "OOO" }
+MMM = { "MMM" }
+OOM = { "OOM" }
+oom = { "oom" }
+
+program = _{ SOI ~ (command | ANY)* ~ EOI }
