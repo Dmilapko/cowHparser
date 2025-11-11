@@ -1,5 +1,5 @@
-use thiserror::Error;
 use pest::error::Error as PestError;
+use thiserror::Error;
 
 #[derive(Error, Debug)]
 pub enum ParseError {

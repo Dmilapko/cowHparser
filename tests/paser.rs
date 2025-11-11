@@ -1,5 +1,5 @@
 use anyhow::Result;
-use cow_parser::{Rule, parse_cow_source, get_commands};
+use cow_parser::{Rule, get_commands, parse_cow_source};
 
 #[test]
 fn test_parse_single_command() -> Result<()> {

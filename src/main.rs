@@ -1,6 +1,6 @@
+use clap::CommandFactory;
 use clap::Parser;
 use std::fs;
-use clap::CommandFactory;
 
 use cow_parser::{get_commands, parse_cow_source};
 
@@ -28,7 +28,7 @@ fn main() {
         let commands = get_commands(&source).expect("ERROR: parsin of .cow is unsuccesfull");
 
         println!("Succesfully prased .cow file");
-        println!("{:?}",commands);
+        println!("{:?}", commands);
     } else {
         let _ = Cli::command().print_help();
     }
