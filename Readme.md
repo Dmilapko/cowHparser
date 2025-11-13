@@ -15,21 +15,23 @@ This parser processes text-based `.cow` files. It identifies and extracts the 12
 The parsing logic is defined by the following rules:
 
 ```rust
-command = {
-    moo | mOo | moO | mOO | Moo | MOo | MoO | MOO | OOO | MMM | OOM | oom
+increment = { "MoO" }
+decrement = { "MOo" }
+move_left = { "mOo" }
+move_right = { "moO" }
+
+increment_block = { increment+ }
+decrement_block = { decrement+ }
+cancelling_moves = { (move_left ~ move_right) | (move_right ~ move_left) }
+
+other_command = {
+    "moo" | "mOO" | "Moo" | "MOO" | "OOO" | "MMM" | "OOM" | "oom"
 }
 
-moo = { "moo" }
-mOo = { "mOo" }
-moO = { "moO" }
-mOO = { "mOO" }
-Moo = { "Moo" }
-MOo = { "MOo" }
-MoO = { "MoO" }
-MOO = { "MOO" }
-OOO = { "OOO" }
-MMM = { "MMM" }
-OOM = { "OOM" }
-oom = { "oom" }
+command = {
+    increment | decrement | move_left | move_right | other_command
+}
 
-program = _{ SOI ~ (command | ANY)* ~ EOI }
+program_token = _{ cancelling_moves | increment_block | decrement_block | command | ANY }
+
+program = _{ SOI ~ program_token* ~ EOI }
